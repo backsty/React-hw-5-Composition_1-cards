@@ -1,0 +1,262 @@
+:root {
+  --glow-color: rgba(13, 110, 253, 0.3);
+  --glow-spread-color: rgba(13, 110, 253, 0.1);
+  --enhanced-glow-color: rgba(13, 110, 253, 0.5);
+  --btn-color: rgb(13, 110, 253);
+}
+
+/* Общие стили */
+body {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+    'Helvetica Neue', sans-serif;
+}
+
+/* Контейнер для карточек */
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.col-md-4 {
+  flex: 0 0 calc(33.333% - 2rem);
+  min-width: 300px;
+  max-width: 400px;
+  transition: transform 0.3s ease;
+}
+
+/* Стили для карточек */
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 5px var(--glow-color),
+    0 0 15px var(--glow-color),
+    0 0 25px var(--glow-color);
+}
+
+@keyframes glow {
+  0% {
+    box-shadow:
+      0 0 5px var(--glow-color),
+      0 0 10px var(--glow-color);
+  }
+  50% {
+    box-shadow:
+      0 0 10px var(--enhanced-glow-color),
+      0 0 20px var(--enhanced-glow-color);
+  }
+  100% {
+    box-shadow:
+      0 0 5px var(--glow-color),
+      0 0 10px var(--glow-color);
+  }
+}
+
+/* Добавляем эффект свечения соседним карточкам */
+.card:hover ~ .col-md-4 .card {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background-color: #f8f9fa;
+}
+
+.card-img-top.loading {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.card-body {
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  color: #212529;
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #6c757d;
+  line-height: 1.5;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* Кнопки */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.btn:hover {
+  box-shadow: 0 0 10px var(--glow-color);
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+.btn-success {
+  background-color: #198754;
+  color: #fff;
+}
+
+/* Заголовок и подвал */
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  margin-bottom: 2rem;
+}
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #fff;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  color: #6c757d;
+}
+
+/* Утилиты */
+.text-center {
+  text-align: center;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+/* Медиа запросы */
+@media (max-width: 1200px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .col-md-4 {
+    flex: 0 0 calc(50% - 2rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .row {
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 0 3px var(--glow-color),
+      0 0 10px var(--glow-color);
+  }
+
+  .card-img-top {
+    height: 250px;
+  }
+}
+
+/* Обработка ошибок загрузки изображений */
+.card-img-top[src$='.jpg'] {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.card-img-top.error::after {
+  content: '❌ Ошибка загрузки';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #842029;
+}
+
+@supports (-webkit-overflow-scrolling: touch) {
+  .card-img-top {
+    height: 200px;
+  }
+}
