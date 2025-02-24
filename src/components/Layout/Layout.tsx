@@ -11,7 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
         <h1 className="text-container">React Cards Demo</h1>
       </header>
       <main>{children}</main>
-      <footer className="pt-3 mt-4 text-muted border-top">© 2024 React Cards Demo</footer>
+      <footer className="pt-3 mt-4 text-muted border-top">© 2025 React Cards Demo</footer>
     </div>
   );
 };
