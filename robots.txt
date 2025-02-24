@@ -1,0 +1,14 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Запрещаем индексацию служебных файлов и папок
+Disallow: /static/
+Disallow: /api/
+Disallow: /assets/
+Disallow: /*.json$
+Disallow: /*.js$
+Disallow: /*.css$
+
+# Sitemap (если у вас есть карта сайта)
+# Sitemap: https://your-domain.com/sitemap.xml
